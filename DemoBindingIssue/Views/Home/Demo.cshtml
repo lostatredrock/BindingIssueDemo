@@ -1,0 +1,30 @@
+﻿@model DemoBindingIssue.Models.DemoViewModel
+
+@{
+    ViewData["Title"] = "Demo";
+}
+<h2>No Qs</h2>
+<form method="post" action="/Home/Demo">
+    <input asp-for="Val1" value="FromForm" />
+    <input asp-for="Val2" value="FromForm" />
+    <input type="submit" value="Submit" />
+</form>
+
+<h2>normal QS</h2>
+<form method="post" action="/Home/Demo?Val1=FromQS&Val2=FromQs">
+    <input asp-for="Val1" value="FromForm" />
+    <input asp-for="Val2" value="FromForm" />
+    <input type="submit" value="Submit" />
+</form>
+
+<h2>vm. QS</h2>
+<form method="post" action="/Home/Demo?vm.Val1=FromQS&vm.Val2=FromQs">
+    <input asp-for="Val1" value="FromForm" />
+    <input asp-for="Val2" value="FromForm" />
+    <input type="submit" value="Submit" />
+</form>
+
+<h3>Results</h3>
+Val1: @Model.Val1
+<br />
+Val2: @Model.Val2
